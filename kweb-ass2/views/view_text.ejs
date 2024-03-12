@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시물 확인</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+        body {
+          font-family: 'Noto Sans KR', sans-serif;
+          background-color: #CCDBFD;
+          margin: 0;
+          padding: 0;
+        }
+
+        table {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-collapse: collapse;
+        }
+
+        .navbar {
+            background-color: #7ca4f6;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        h3 {
+          text-align: center;
+          color: #ffffff;
+          border-bottom: 2px solid #7ca4f6;
+          padding-bottom: 1px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+
+        button {
+          background-color: #abc4ff;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #9fbefc;
+        }
+
+        th, td {
+            border: 1px solid #CCCCCC;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .back-to-top {
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          background-color: #abc4ff;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 5px;
+          font-size: 8px;
+          cursor: pointer;
+      }
+
+      .back-to-top:hover {
+          background-color: #9fbefc;
+      }
+
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <h3>게시물</h3>
+    </div>
+    <div class="container">
+      <table>
+        <tr>
+            <th>게시물 번호</th>
+            <th>수강번호</th>
+            <th>강좌명</th>
+            <th>교수명</th>
+        </tr>
+        <% texts.forEach(function(text) { %>
+          <tr>
+            <td><%= text.note_id %></td>
+            <td><%= text.course_id %></td>
+            <td><%= text.lecture_name %></td>
+            <td><%= text.professor_name %></td>
+        </tr>
+        <% }); %>
+      </table>
+
+      <table2>
+        <h3>내용</h3>
+        <% texts.forEach(function(text) { %>
+          <tr>
+            <td><textarea readonly style="width: 100%;"><%= text.content %></textarea></td>
+          </tr>
+        <% }); %>
+      </table2>
+
+      <a href="/student/select" class="back-to-top">처음으로 돌아가기</a>
+    </div>
+</body>
+</html>

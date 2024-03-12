@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강의별 게시물 리스트</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+      body {
+          font-family: 'Noto Sans KR', sans-serif;
+          background-color: #CCDBFD;
+          margin: 0;
+          padding: 0;
+      }
+
+      .navbar {
+        background-color: #7ca4f6;
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+
+
+      .container {
+        margin: 20px;
+      }
+
+      h2{
+        border-bottom: 2px solid #7ca4f6;
+        padding-bottom: 1px;
+      }
+
+      h3 {
+        text-align: center;
+        color: #ffffff;
+        border-bottom: 2px solid #7ca4f6;
+        padding-bottom: 1px;
+      }
+
+      .textbox-container {
+        width: 100%; /* 창의 길이만큼 */
+      }
+      
+      .textbox {
+          background-color: white; /* 하얀색 배경 */
+          padding: 10px; /* 내용 주위의 여백 */
+          border-radius: 5px; /* 둥근 테두리 */
+      }
+
+      ul {
+          list-style-type: none;
+          padding: 0;
+      }
+
+      li {
+          background-color: white;
+          padding: 10px;
+          margin-bottom: 10px;
+          border-radius: 5px;
+      }
+
+      li:hover {
+          background-color: #f0f0f0;
+      }
+
+      .bt {
+          position: fixed;
+          bottom: 20px;
+          background-color: #abc4ff;
+          color: white;
+          border: none;
+          bottom: 30px;
+          right: 30px;
+          padding: 5px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+
+      .bt:hover {
+          background-color: #9fbefc;
+      }
+
+      th, td {
+          border: 1px solid #CCCCCC;
+          padding: 8px;
+          text-align: center;
+      }
+      
+      th {
+          background-color: #f2f2f2;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: #abc4ff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 8px;
+        cursor: pointer;
+      }
+
+      .back-to-top:hover {
+          background-color: #9fbefc;
+      }
+
+      .back-box {
+        width: 100%; /* 창의 너비만큼 */
+        height: 100%; /* 창의 높이만큼 */
+        padding: 10px; /* 내용 주위의 여백 */
+        border-radius: 5px; /* 둥근 테두리 */
+        margin: 10px;
+        background-color: rgba(255, 255, 255, 0.2); /* 투명도가 0.2인 하얀색 */
+      }
+    
+
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <h3>강의별 게시물 리스트</h3>
+    </div>
+    <div class="container">
+      <% if (notes && notes.length) { %>
+        <% notes.forEach(function(note) { %>
+          <div class = "back-box">
+            <h2><%= note.lecture_name %> - <%= note.professor_name %></h2>
+            <p>작성 시간: <%= note.created_at %></p>
+            <div class="textbox-container">
+              <div class="textbox"><%= note.content %></div>
+            </div>
+          </div>
+        <% }); %> 
+      <% } else { %>
+        <p>게시물이 없습니다.</p>
+      <% } %>
+      <a href="/student/select" class="back-to-top">처음으로 돌아가기</a>
+    </div>
+  </body>
+</html>

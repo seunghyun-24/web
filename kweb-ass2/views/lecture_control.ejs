@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강의 관리</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #CCDBFD;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-collapse: collapse;
+        }
+
+        .navbar {
+            background-color: #7ca4f6;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 2px solid #7ca4f6;
+            padding-bottom: 1px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .bt {
+            position: fixed;
+            bottom: 20px;
+            background-color: #abc4ff;
+            color: white;
+            border: none;
+            bottom: 30px;
+            right: 30px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .bt:hover {
+            background-color: #9fbefc;
+        }
+
+        th, td {
+            border: 1px solid #CCCCCC;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h3>강의 목록 사이트</h3>
+    </div>
+    <div class="container">
+        <h2>강의하고 있는 과목 목록 : 교수자 <%= info.name %></h2>
+        <% if (courses.length === 0) { %>
+            <p>강의하고 있는 과목이 없습니다.</p>
+        <% } else { %>
+            <table>
+                <tr>
+                    <th>수강번호</th>
+                    <th>강좌명</th>
+                    <th>수강 최대 인원</th>
+                </tr>
+                <% courses.forEach(function(course) { %>
+                    <tr>
+                        <td><%= course.id %></td>
+                        <td><%= course.lecname %></td>
+                        <td><%= course.total %></td>
+                    </tr>
+                <% }); %>
+            </table>
+        <% } %>
+
+    <form action="/professor/make_lecture" method="get">
+        <input type="hidden" name="name" value="<%= info.name %>">
+        <button type="submit" class="bt">새 강의 개설</button>
+    </form>
+
+    </div>
+</body>
+</html>

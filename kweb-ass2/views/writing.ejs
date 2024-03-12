@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강의별 게시물 작성</title>
+</head>
+<body>
+    <h2>게시물 작성</h2>
+    <form action="/professor/writing" method="post">
+        <p><input type="text" name="course_id" placeholder=<%= course_id %>"></p>
+        <p><input type="text" name="lecname" placeholder="강의명"></p>
+        <p><input type="text" name="profname" placeholder="교수명"></p>
+        <p><textarea name="content" placeholder="내용"></textarea></p> <!-- 콘텐트를 받는 textarea 추가 -->
+        <p><input type="submit" value="작성"></p>
+    </form>
+</body>
+</html>
